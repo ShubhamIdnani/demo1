@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BhartiyaRail — Book Indian Railway tickets</title>
+  <meta name="description" content="BhartiyaRail — clean and responsive ticket booking UI (static)." />
+  <link rel="stylesheet" href="style.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/11718cd0ed.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="site">
+    <header class="nav">
+      <div class="container nav-inner">
+        <div class="brand">
+          <div class="logo">
+          </div>
+          <div class="brand-text">
+            <div class="title">BhartiyaRail <span class="badge">Beta</span></div>
+            <div class="subtitle">Faster • Safer • Simpler</div>
+          </div>
+        </div>
+        <nav class="main-nav">
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#trust">Trust & Safety</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="cta">
+          <button class="btn1">Sign in</button>
+          <button class="btn2">Create account</button>
+        </div>
+        <button class="menu-toggle" aria-label="open menu">☰</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-left">
+            <h1>Book Indian Railway tickets</h1>
+             <span class="accent"> 
+                faster & safer</span>
+            <p class="lead">BhartiyaRail is your professional portal for pan-India train reservations. Secure payments, live availability, and PNR updates — all in one clean interface.</p>
+            <div class="feature-chips">
+              <span class="chip">🔒 RBI-compliant flows</span>
+              <span class="chip">⏱️ Instant PNR alerts</span>
+              <span class="chip">🎫 Smart waitlist assist</span>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <form class="card booking" id="bookingForm">
+              <div class="tabs">
+                <button class="tab active" data-tab="search">Search Trains</button>
+                <button class="tab" data-tab="pnr">PNR Status</button>
+              </div>
+
+              <div class="tabpane active" id="pane-search">
+                <div class="row two-cols">
+                  <div class="field">
+                    <label>From</label>
+                    <input type="text" id="from" placeholder="e.g., New Delhi (NDLS)" />
+                  </div>
+                  <div class="field swap-wrap">
+                    <label>&</label>
+                    <button type="button" class="btn small" id="swapBtn">Swap</button>
+                  </div>
+                  <div class="field">
+                    <label>To</label>
+                    <input type="text" id="to" placeholder="e.g., Mumbai Central (MMCT)" />
+                  </div>
+                </div>
+
+                <div class="row three-cols">
+                  <div class="field">
+                    <label>Journey date</label>
+                    <input type="date" id="journeyDate" />
+                  </div>
+                  <div class="field">
+                    <label>Class</label>
+                    <select id="classSelect">
+                      <option value="3A">AC 3-Tier (3A)</option>
+                      <option value="2A">AC 2-Tier (2A)</option>
+                      <option value="SL">Sleeper (SL)</option>
+                      <option value="CC">Chair Car (CC)</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label>Quota</label>
+                    <select id="quotaSelect">
+                      <option value="gen">General</option>
+                      <option value="tatkal">Tatkal</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button type="button" class="btn primary full" id="searchBtn">🔍 Search Trains</button>
+
+                <div class="results" id="results" aria-live="polite">
+                  <!-- Sample results will be injected here by small JS below -->
+                </div>
+              </div>
+
+              <div class="tabpane" id="pane-pnr">
+                <div class="field">
+                  <label>Enter 10-digit PNR</label>
+                  <input type="text" id="pnr" maxlength="10" placeholder="1234567890" />
+                </div>
+                <button type="button" class="btn primary full">Check PNR</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="logos">
+        <div class="container grid-logos">
+          <div class="logo-card">Secure Payments</div>
+          <div class="logo-card">24x7 Support</div>
+          <div class="logo-card">GST Invoices</div>
+          <div class="logo-card">Instant Refunds</div>
+        </div>
+      </section>
+
+      <section id="features" class="section">
+        <div class="container">
+          <h2>Why BhartiyaRail</h2>
+          <div class="cards three">
+            <div class="feature-card">
+              <div class="icon">🎟️</div>
+              <h3>Smart Booking</h3>
+              <p>Auto-fill passenger profiles, preferred berths, and class to shave minutes off checkout.</p>
+            </div>
+            <div class="feature-card">
+              <div class="icon">🔒</div>
+              <h3>Bank-grade Security</h3>
+              <p>UPI, cards, and net-banking supported with multi-factor authentication.</p>
+            </div>
+            <div class="feature-card">
+              <div class="icon">⏱️</div>
+              <h3>Real-time Updates</h3>
+              <p>Live availability, waitlist prediction, and coach/seat notifications.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" class="section alt">
+        <div class="container">
+          <h2>How it works</h2>
+          <ol class="steps three">
+            <li>
+              <div class="step-title">Search & Select</div>
+              <p>Enter stations, date, class & quota. Compare trains and timings at a glance.</p>
+            </li>
+            <li>
+              <div class="step-title">Add Travellers</div>
+              <p>Save passenger profiles securely and reuse them with one click.</p>
+            </li>
+            <li>
+              <div class="step-title">Pay & Travel</div>
+              <p>Complete payment via UPI/cards. Get e-ticket & PNR alerts instantly.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="trust" class="section">
+        <div class="container">
+          <h2>Trust & Safety</h2>
+          <div class="stats three">
+            <div class="stat-card"><div class="num">2M+</div><div class="label">Bookings served</div></div>
+            <div class="stat-card"><div class="num">&lt; 60s</div><div class="label">Avg. checkout time</div></div>
+            <div class="stat-card"><div class="num">4.8/5</div><div class="label">Support CSAT</div></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="brand small">
+            <div class="logo"></div>
+            <div class="brand-text">
+              <div class="title">BhartiyaRail</div>
+            </div>
+          </div>
+          <p class="muted">Professional Indian Railway ticketing platform. Built for speed, reliability, and trust.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul class="link-list">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#trust">Trust & Safety</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul class="link-list">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Refunds</a></li>
+            <li><a href="#">Terms & Privacy</a></li>
+            <li><a href="#">Report an issue</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="link-list">
+            <li>📞 +91 98xx-xx-xxxx</li>
+            <li>✉️ support@bhartiyarail.com</li>
+            <li>🌐 www.bhartiyarail.com</li>
+            <li>🐙 github.com/bhartiyarail</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">© 2025 BhartiyaRail Technologies Pvt. Ltd. All rights reserved.</div>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
