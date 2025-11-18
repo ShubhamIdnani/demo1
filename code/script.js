@@ -66,9 +66,18 @@
   };
 
   // Search button click
-  document.getElementById('searchBtn').addEventListener('click', () => {
-    renderTrains(sampleTrains);
-  });
+document.getElementById('searchBtn').addEventListener('click', () => {
+  const searchValue = document.getElementById('searchInput').value.toLowerCase();
+
+  const filteredTrains = sampleTrains.filter(train =>
+    train.name.toLowerCase().includes(searchValue) ||
+    train.number.toString().includes(searchValue) ||
+    train.route.toLowerCase().includes(searchValue)
+  );
+
+  renderTrains(filteredTrains);
+});
+
 
   // Optional: live filter by input
   const searchInput = document.getElementById('from');

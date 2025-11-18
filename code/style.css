@@ -12,7 +12,9 @@ html, body {
 body {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   margin: 0;
-  background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+  background: linear-gradient(to bottom, rgb(145, 206, 255), rgb(240, 255, 254), rgb(160, 182, 255));
+  background-repeat: no-repeat;
+  background-size: 900% 260%;
   color: #0f172a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -23,7 +25,7 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar {
-  background-color: transparent;
+  background-color: #0F172A;
 }
 
 html::-webkit-scrollbar-thumb {
@@ -46,7 +48,11 @@ html::-webkit-scrollbar-thumb {
 .container {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0px 20px;
+}
+
+.container h2 {
+  padding-bottom: 10px;
 }
 
 /* Navbar */
@@ -54,10 +60,11 @@ html::-webkit-scrollbar-thumb {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(248, 254, 255, 0.445);
+  background: rgba(248, 254, 255, 0.324);
   -webkit-backdrop-filter: blur(6px);
           backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+  border-bottom: 2px solid rgb(15, 23, 42);
+  border-radius: 0px 0px 25px 25px;
 }
 
 .nav-inner {
@@ -117,7 +124,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 .main-nav a:hover {
-  color: #107b10;
+  color: #006199;
 }
 
 .cta {
@@ -187,7 +194,6 @@ html::-webkit-scrollbar-thumb {
 }
 
 main {
-  background: linear-gradient(to bottom, rgb(218, 242, 255), rgb(240, 255, 254), rgb(160, 182, 255));
   display: flex;
   flex-direction: column;
   gap: 40px;
@@ -196,7 +202,7 @@ main {
 
 /* Hero */
 .hero {
-  padding: 48px 0;
+  padding: 60px;
 }
 
 .hero-grid {
@@ -207,33 +213,55 @@ main {
 }
 
 .hero-left h1 {
-  font-size: 34px;
+  font-family: "tit";
+  font-size: 3rem;
+  color: #006199;
   line-height: 1.05;
-  margin: 0;
+  margin-bottom: 20px;
+}
+
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 28rem;
+  width: 32rem;
+  padding: 50px;
+  background: transparent;
+  border-radius: 50px;
+  border: 1.5px solid rgba(0, 31, 46, 0.5764705882);
+  box-shadow: 0 0 20px #006199, inset 0 0 40px #ffffff;
 }
 
 .accent {
-  color: #107b10;
+  padding: 14px;
+  background: linear-gradient(to bottom right, #b0ffb0, #228B22, #095b09);
+  color: white;
+  font-family: "saira";
+  font-size: 1.7rem;
+  font-weight: 700;
+  border-radius: 20px;
 }
 
 .lead {
   color: #6b7280;
-  margin-top: 12px;
+  margin-top: 60px;
   max-width: 46ch;
 }
 
 .feature-chips {
-  margin-top: 16px;
+  margin-top: 30px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
 }
 
 .chip {
-  background: white;
+  background: #ffffff;
   padding: 8px 12px;
   border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(15, 23, 42, 0.388);
   box-shadow: 0 1px 4px rgba(2, 6, 23, 0.03);
   font-size: 13px;
 }
@@ -243,10 +271,18 @@ main {
   border-radius: 14px;
 }
 
+.cardmain {
+  background-color: black;
+}
+
 .tabs {
   display: flex;
   gap: 8px;
   margin-bottom: 12px;
+}
+
+.tabs button {
+  background-color: #ceedff;
 }
 
 .tab {
@@ -266,7 +302,12 @@ main {
 .field {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 15px;
+}
+
+.field label {
+  font-family: "tit1";
+  padding-left: 12px;
 }
 
 .row.two-cols {
@@ -285,11 +326,15 @@ main {
 input[type=text], input[type=date], select {
   padding: 10px 12px;
   border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.6823529412);
   border: 1px solid rgba(15, 23, 42, 0.06);
 }
 
 .btn.full {
+  background-color: #006199;
+  margin-top: 12px;
   width: 100%;
+  color: white;
 }
 
 .note {
@@ -384,14 +429,17 @@ input[type=text], input[type=date], select {
 }
 
 .feature-card {
-  background: white;
+  background: rgba(255, 255, 255, 0.6352941176);
   border-radius: 12px;
   padding: 18px;
-  border: 1px solid rgba(2, 6, 23, 0.04);
+  border: 1px solid rgba(2, 6, 23, 0.776);
+  transition: all 0.2s ease-in-out;
+  box-shadow: inset 0 0 20px rgb(125, 203, 255);
 }
 
 .feature-card .icon {
   font-size: 22px;
+  padding-bottom: 3px;
 }
 
 .steps.three {
@@ -446,13 +494,17 @@ input[type=text], input[type=date], select {
 }
 
 .link-list {
-  list-style: none;
+  display: flex;
+  flex-direction: column;
   padding: 0;
   margin: 0;
 }
 
-.link-list li {
-  margin-bottom: 8px;
+.link-list div {
+  display: flex;
+  position: relative;
+  gap: 10px;
+  padding: 5px 0px;
 }
 
 .muted {
@@ -460,11 +512,11 @@ input[type=text], input[type=date], select {
 }
 
 .copyright {
-  border-top: 1px solid rgba(255, 255, 255, 0.03);
   text-align: center;
-  padding: 12px;
-  margin-top: 18px;
-  color: rgba(255, 255, 255, 0.6);
+  padding: 10px;
+  border-top: 1px solid white;
+  color: rgba(255, 255, 255, 0.751);
+  background-color: #0F172A;
 }
 
 /* Responsive */
@@ -511,6 +563,12 @@ input[type=text], input[type=date], select {
   }
 }
 @media (max-width: 480px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
   .row.two-cols {
     grid-template-columns: 1fr 64px 1fr;
   }
