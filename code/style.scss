@@ -120,6 +120,38 @@ html::-webkit-scrollbar-thumb {
     display:flex; 
     gap:8px;
 }
+#btn1{
+    width: 310%;
+    height: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+#searcht{
+height: 170%;
+    background-color: #006199;
+    border: none;
+    border-radius: 10px;
+width: 100%;
+color: white;
+font-family: monospace;
+cursor: pointer;
+}
+#searcht:hover{
+    background-color: #013654;
+}
+#pnrbtn:hover{
+    background-color: #013654;
+}
+#searcht:active{
+        background-color: #001928;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.623);
+}
+#pnrbtn:active{
+    background-color: #001928;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.623);
+
+}
 .btn{
     display:inline-flex; 
     align-items:center; 
@@ -238,6 +270,8 @@ main{
     font-size:13px
 }
 
+
+
 /* Booking card */
 .card.booking{
     border-radius:$radius; 
@@ -265,6 +299,7 @@ main{
     background:$primary; 
     color:white
 }
+
 .field{
     display:flex; 
     flex-direction:column; 
