@@ -1,54 +1,77 @@
-(function() {
+(function () {
+
+  // ============================
+  // 1) TAB SWITCHING (AS IT IS)
+  // ============================
   const tabs = document.querySelectorAll('.tab');
   const panes = document.querySelectorAll('.tabpane');
 
-  // Tab switching with click & keyboard, scroll prevent
   tabs.forEach(tab => {
     const switchTab = e => {
-      e.preventDefault(); // scroll prevent
+      e.preventDefault();
       tabs.forEach(t => t.classList.remove('active'));
       panes.forEach(p => p.classList.remove('active'));
+
       tab.classList.add('active');
-      document.getElementById('pane-' + tab.dataset.tab).classList.add('active');
+      document.getElementById("pane-" + tab.dataset.tab).classList.add('active');
     };
-    tab.addEventListener('click', switchTab);
-    tab.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') switchTab(e);
+
+    tab.addEventListener("click", switchTab);
+    tab.addEventListener("keydown", e => {
+      if (e.key === "Enter" || e.key === " ") switchTab(e);
     });
   });
 
-  // Swap from-to inputs
-  const swapBtn = document.getElementById('swapBtn');
-  swapBtn.addEventListener('click', () => {
-    const from = document.getElementById('from');
-    const to = document.getElementById('to');
-    [from.value, to.value] = [to.value, from.value];
-  });
 
-  // Realistic Indian trains data
+
+  // ============================
+  // 2) FROM–TO SWAP
+  // ============================
+  const swapBtn = document.getElementById("swapBtn");
+  if (swapBtn) {
+    swapBtn.addEventListener("click", () => {
+      const from = document.getElementById("from");
+      const to = document.getElementById("to");
+      [from.value, to.value] = [to.value, from.value];
+    });
+  }
+
+
+
+  // ============================
+  // 3) REAL INDIAN TRAIN DATA
+  // ============================
   const sampleTrains = [
-    { no: '12002', name: 'New Delhi‑Bhopal Shatabdi Express', dep: '06:00', arr: '14:40', dur: '8h 40m', days: 'Daily' },
-    { no: '12001', name: 'Bhopal‑New Delhi Shatabdi Express', dep: '15:20', arr: '00:00', dur: '8h 40m', days: 'Daily' },
-    { no: '12621', name: 'Tamil Nadu Express', dep: '20:00 (Chennai)', arr: '04:00 (Delhi +1)', dur: '32h', days: 'Daily' },
-    { no: '12622', name: 'New Delhi‑Tamil Nadu Express', dep: '08:40 (Delhi)', arr: '16:40 (Chennai +1)', dur: '32h', days: 'Daily' },
-    { no: '12441', name: 'Bilaspur‑New Delhi Rajdhani Express', dep: '18:45', arr: '15:25 (Next Day)', dur: '20h 40m', days: 'Bi-Weekly' },
-    { no: '12442', name: 'New Delhi‑Bilaspur Rajdhani Express', dep: '12:30', arr: '09:10 (Next Day)', dur: '20h 40m', days: 'Bi-Weekly' },
-    { no: '12617', name: 'Mangala Lakshadweep Express', dep: '08:00 (New Delhi)', arr: '09:00 (Kochi +2)', dur: '49h', days: 'Daily' },
-    { no: '12618', name: 'Kochi‑New Delhi Mangala Lakshadweep Express', dep: '11:15 (Kochi)', arr: '14:00 (New Delhi +2)', dur: '49h', days: 'Daily' },
-    { no: '12049', name: 'Gatimaan Express (Delhi‑Agra)', dep: '08:10', arr: '09:50', dur: '1h 40m', days: 'Daily' },
-    { no: '13005', name: 'Amritsar Mail (Howrah‑Amritsar)', dep: '18:45 (Howrah)', arr: '07:30 (Amritsar +1)', dur: '36h 45m', days: 'Daily' },
-    { no: '13006', name: 'Amritsar Mail (Amritsar‑Howrah)', dep: '10:00 (Amritsar)', arr: '22:45 (Howrah)', dur: '36h 45m', days: 'Daily' },
+    { no: '12002', name: 'New Delhi – Bhopal Shatabdi Express', dep: '06:00', arr: '14:40', dur: '8h 40m', days: 'Daily' },
+    { no: '12235', name: 'Mumbai – Nagpur Vande Bharat Express', dep: '06:00', arr: '14:50', dur: '8h 50m', days: 'Daily' },
+    { no: '12050', name: 'Gatimaan Express (Delhi – Agra)', dep: '08:10', arr: '09:50', dur: '1h 40m', days: 'Daily' },
+    { no: '12294', name: 'Prayagraj – New Delhi Tejas Express', dep: '15:00', arr: '21:55', dur: '6h 55m', days: 'Daily' },
+    { no: '12423', name: 'Dibrugarh – New Delhi Rajdhani Express', dep: '20:55', arr: '13:55 (+2)', dur: '41h', days: 'Daily' },
   ];
 
-  const resultsEl = document.getElementById('results');
+
+
+  // ============================
+  // 4) RENDER TRAIN RESULTS
+  // ============================
+  const resultsEl = document.getElementById("results");
+
   const renderTrains = trains => {
     resultsEl.innerHTML = trains.length
       ? trains.map(r => `
-          <div class="result-item">
+      <div class="result-wrap">
+        <div class="result-header">
+          <span>${r.name}</span>
+          <button class="drop-btn">View Details</button>
+        </div>
+
+        <div class="result-body">
+          <div class="r-item">
             <div class="r-left">
-              <div class="r-title">${r.name} <span class="muted">(${r.no})</span></div>
+              <div class="r-title">${r.name} <span>(${r.no})</span></div>
               <div class="muted small">${r.days}</div>
             </div>
+
             <div class="r-mid">
               <div class="times">
                 <div><div class="small">Dep</div><div class="big">${r.dep}</div></div>
@@ -57,43 +80,70 @@
               </div>
               <div class="muted small">${r.dur}</div>
             </div>
+
             <div class="r-right">
               <button class="btn primary">Book</button>
             </div>
-          </div>`).join('')
-      : '<p class="note">No trains found.</p>';
-    resultsEl.scrollIntoView({ behavior: 'smooth' });
+          </div>
+        </div>
+      </div>`).join("")
+      : `<p class="note">No trains found.</p>`;
+
+    resultsEl.scrollIntoView({ behavior: "smooth" });
+
+    const allBodies = document.querySelectorAll(".result-body");
+
+    document.querySelectorAll(".drop-btn").forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+
+        allBodies.forEach((b, i) => {
+          if (i !== index) b.classList.remove("show");
+        });
+
+        allBodies[index].classList.toggle("show");
+      });
+    });
   };
 
-  // Search button click
-document.getElementById('searchBtn').addEventListener('click', () => {
-  const searchValue = document.getElementById('searchInput').value.toLowerCase();
-
-  const filteredTrains = sampleTrains.filter(train =>
-    train.name.toLowerCase().includes(searchValue) ||
-    train.number.toString().includes(searchValue) ||
-    train.route.toLowerCase().includes(searchValue)
-  );
-
-  renderTrains(filteredTrains);
-});
 
 
-  // Optional: live filter by input
-  const searchInput = document.getElementById('from');
-  if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      const filtered = sampleTrains.filter(t => 
-        t.name.toLowerCase().includes(searchInput.value.toLowerCase()) ||
-        t.no.includes(searchInput.value)
+  // ============================
+  // 5) SEARCH BUTTON
+  // ============================
+  const searchBtn = document.getElementById("searchBtn");
+  const searchInput = document.getElementById("searchInput");
+
+  if (searchBtn) {
+    searchBtn.addEventListener("click", () => {
+      const value = searchInput.value.toLowerCase();
+
+      const filtered = sampleTrains.filter(train =>
+        train.name.toLowerCase().includes(value) ||
+        train.no.includes(value)
       );
+
       renderTrains(filtered);
     });
   }
 
-  // Menu toggle
-  document.querySelector('.menu-toggle').addEventListener('click', () => {
-    document.querySelector('.main-nav').classList.toggle('open');
-  });
+
+
+  // ============================
+  // 6) LIVE FILTER SEARCH (TYPE KARTE HI SHOW)
+  // ============================
+  const liveInput = document.getElementById("searchInput");
+
+  if (liveInput) {
+    liveInput.addEventListener("input", () => {
+      const value = liveInput.value.toLowerCase();
+
+      const filtered = sampleTrains.filter(train =>
+        train.name.toLowerCase().includes(value) ||
+        train.no.includes(value)
+      );
+
+      renderTrains(filtered);
+    });
+  }
 
 })();
