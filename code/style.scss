@@ -78,20 +78,25 @@ html::-webkit-scrollbar-thumb {
      gap:12px
     }
 .logo{
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     background-image: url('ss1.png');
     background-size: contain;
     background-color: #228B22;
     background-repeat: no-repeat;
     border-radius: 6px;
+    margin-bottom: 5px;
     }
 .brand-text 
 .title{
     font-family: "tit";
     font-weight:900;
+    font-size: 20px;
+    color: #002e48;
 }
-
+.feature-chips .chip span{
+    color:#006199;
+}
 .brand-text .subtitle{font-size:12px; color:$muted}
 .badge{
     font-family: "tit1";
@@ -114,7 +119,7 @@ html::-webkit-scrollbar-thumb {
     font-size:14px;
 }
 .main-nav a:hover{
-    color:#006199;
+    color:#005789;
 }   
 .cta{
     display:flex; 
@@ -223,7 +228,7 @@ main{
 .hero-left h1{
     font-family: "tit";
     font-size:3rem; 
-    color:#006199;
+    color:#002e48;
     line-height:1.05; 
     margin-bottom:20px;
 }
@@ -261,15 +266,30 @@ main{
     gap:10px; 
     flex-wrap:wrap
 }
-.chip{
-    background:#ffffff; 
-    padding:8px 12px; 
-    border-radius:999px; 
-    border:1px solid rgba(15, 23, 42, 0.388); 
-    box-shadow:0 1px 4px rgba(2,6,23,0.03); 
-    font-size:13px
+.trainsearch{
+    display: none;
 }
-
+.chip{
+    background:#ffffff5d; 
+    padding:10px 20px; 
+    border-radius:999px; 
+    font-family:"tit1";
+    border:1px solid rgba(0, 76, 255, 0.511); 
+    box-shadow:0 1px 4px rgba(2,6,23,0.03); 
+    font-size:15px;
+    font-weight: 500;
+}
+.chip:hover{
+    background: #ceedff;
+    cursor: pointer;
+}
+.chip::selection{
+   background: transparent;
+}
+.chip:active{
+    background: #0178bc62;
+    cursor: pointer;
+}
 
 
 /* Booking card */
@@ -308,7 +328,7 @@ main{
 
     .field label{
         font-family:"tit1";
-        padding-left: 12px;
+        padding-left: 10px;
         margin-top: 10px;
     }
 
@@ -324,7 +344,7 @@ main{
     margin-top:8px
 }
 input[type="text"], input[type="date"], select{
-    padding:10px 12px; 
+    padding:8px 10px; 
     border-radius:8px; 
     background-color: #ffffffae;
     border:1px solid rgba(15,23,42,0.06)
@@ -463,7 +483,7 @@ input[type="text"], input[type="date"], select{
     padding: 5px 0px ;
 }
 .muted{
-    color: rgba(255,255,255,0.75)
+    color: rgba(255, 255, 255, 0.75)
 }
 .copyright{
     text-align:center; 
@@ -506,7 +526,6 @@ input[type="text"], input[type="date"], select{
 }
 
 
-/* Responsive */
 @media (max-width: 980px){
   .hero-grid{
     grid-template-columns:1fr 420px
@@ -558,13 +577,13 @@ input[type="text"], input[type="date"], select{
   .logo{
     display: flex;
     align-items: center;
-    width: 35px;
+    width: 30px;
     height: 30px;
 }
 }
 
-/* small polish */
+
 a{color:inherit}
 button:focus, input:focus, select:focus{outline:2px solid rgba(5,150,105,0.12); outline-offset:2px}
 
-/* end of file */
+

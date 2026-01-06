@@ -82,18 +82,25 @@ html::-webkit-scrollbar-thumb {
 }
 
 .logo {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   background-image: url("ss1.png");
   background-size: contain;
   background-color: #228B22;
   background-repeat: no-repeat;
   border-radius: 6px;
+  margin-bottom: 5px;
 }
 
 .brand-text .title {
   font-family: "tit";
   font-weight: 900;
+  font-size: 20px;
+  color: #002e48;
+}
+
+.feature-chips .chip span {
+  color: #006199;
 }
 
 .brand-text .subtitle {
@@ -124,7 +131,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 .main-nav a:hover {
-  color: #006199;
+  color: #005789;
 }
 
 .cta {
@@ -251,7 +258,7 @@ main {
 .hero-left h1 {
   font-family: "tit";
   font-size: 3rem;
-  color: #006199;
+  color: #002e48;
   line-height: 1.05;
   margin-bottom: 20px;
 }
@@ -293,13 +300,37 @@ main {
   flex-wrap: wrap;
 }
 
+.trainsearch {
+  display: none;
+}
+
 .chip {
-  background: #ffffff;
-  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.3647058824);
+  padding: 10px 20px;
   border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.388);
+  font-family: "tit1";
+  border: 1px solid rgba(0, 76, 255, 0.511);
   box-shadow: 0 1px 4px rgba(2, 6, 23, 0.03);
-  font-size: 13px;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.chip:hover {
+  background: #ceedff;
+  cursor: pointer;
+}
+
+.chip::-moz-selection {
+  background: transparent;
+}
+
+.chip::selection {
+  background: transparent;
+}
+
+.chip:active {
+  background: rgba(1, 120, 188, 0.3843137255);
+  cursor: pointer;
 }
 
 /* Booking card */
@@ -343,7 +374,7 @@ main {
 
 .field label {
   font-family: "tit1";
-  padding-left: 12px;
+  padding-left: 10px;
   margin-top: 10px;
 }
 
@@ -361,7 +392,7 @@ main {
 }
 
 input[type=text], input[type=date], select {
-  padding: 10px 12px;
+  padding: 8px 10px;
   border-radius: 8px;
   background-color: rgba(255, 255, 255, 0.6823529412);
   border: 1px solid rgba(15, 23, 42, 0.06);
@@ -589,7 +620,6 @@ input[type=text], input[type=date], select {
   cursor: pointer;
 }
 
-/* Responsive */
 @media (max-width: 980px) {
   .hero-grid {
     grid-template-columns: 1fr 420px;
@@ -648,11 +678,10 @@ input[type=text], input[type=date], select {
   .logo {
     display: flex;
     align-items: center;
-    width: 35px;
+    width: 30px;
     height: 30px;
   }
 }
-/* small polish */
 a {
   color: inherit;
 }
@@ -660,6 +689,4 @@ a {
 button:focus, input:focus, select:focus {
   outline: 2px solid rgba(5, 150, 105, 0.12);
   outline-offset: 2px;
-}
-
-/* end of file *//*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
